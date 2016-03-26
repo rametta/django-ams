@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Artist - {{ block.super }}{% endblock title %}
+
+{% block nav-artist %}active{% endblock nav-artist %}
+
+{% block pagetitle %}Artist{% endblock pagetitle %}
+
+{% block content %} 
+
+    <p>{{ artist.email }}</p>
+
+{% endblock content %}

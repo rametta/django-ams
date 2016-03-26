@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Artists - {{ block.super }}{% endblock title %}
+
+{% block nav-artist %}active{% endblock nav-artist %}
+
+{% block pagetitle %}Artists{% endblock pagetitle %}
+
+{% block content %} 
+
+    {% for artist in all_artists %}
+        <p>{{ artist.email }}</p>
+    {% endfor %}
+
+{% endblock content %}

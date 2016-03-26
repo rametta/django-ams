@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Work - {{ block.super }}{% endblock title %}
+
+{% block nav-work %}active{% endblock nav-work %}
+
+{% block pagetitle %}All Work{% endblock pagetitle %}
+
+{% block content %} 
+
+    {% for work in all_work %}
+        <p>{{ work.title }}</p>
+    {% endfor %}
+
+{% endblock content %}
