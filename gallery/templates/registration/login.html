@@ -1,16 +1,41 @@
 {% extends 'base.html' %}
+{% load myFilters %}
 
 {% block title %}Login - {{ block.super }}{% endblock title %}
 
 {% block pagetitle %}Login{% endblock pagetitle %}
 
 {% block content %}
-<form role="form" action="" method="post">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Submit" />
-</form>
-<p>
-<a href="{% url 'password_reset' %}">Forgot your password?</a>
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <form method="POST" class="form-horizontal" enctype="multipart/form-data">
+                <fieldset>
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                    <div class="form-group">
+                        {{ field.errors }}
+                        <label for="{{ field.id_for_label }}" class="col-lg-12">{{ field.label }}</label>
+                        <div class="col-lg-4">
+                            {{ field|addClass:'form-control' }}
+                            {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <div class="form-group">
+                        <div class="col-lg-4">
+                            <button type="submit" class="pull-right btn btn-primary">Submit</button>
+                            <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+                        </div>
+                    </div>
+                    
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
