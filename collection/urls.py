@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls import url, include
+from django.views.static import serve
 from django.contrib import admin
 from gallery import views
 from django.contrib.auth.views import (
@@ -30,7 +31,10 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += [
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-                'document_root': settings.MEDIA_ROOT,
-            }),
+        url(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
     ]
+    
+    
+    

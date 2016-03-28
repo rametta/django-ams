@@ -2,6 +2,16 @@
 
 {% block title %}Add Work - {{ block.super }}{% endblock title %}
 
+{% block nav-work %}active{% endblock nav-work %}
+
 {% block pagetitle %}Add Work{% endblock pagetitle %}
 
-{% block content %} {% endblock content %}
+{% block content %} 
+
+<form method="POST" class="post-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-primary">Submit</button>
+</form>
+
+{% endblock content %}

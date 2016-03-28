@@ -57,7 +57,7 @@ WSGI_APPLICATION = 'collection.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'amsdb2',
+        'NAME': 'amsdb',
         'USER': 'jason',
         'PASSWORD': 'ams1234',
         'HOST': 'localhost',
