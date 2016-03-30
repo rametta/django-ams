@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}Artist {{ artist.username }} - {{ block.super }}{% endblock title %}
+{% block title %}{{ artist.username }} - {{ block.super }}{% endblock title %}
 
 {% block nav-artist %}active{% endblock nav-artist %}
 
-{% block pagetitle %}Artist{% endblock pagetitle %}
+{% block pagetitle %}{{ artist.username }}{% endblock pagetitle %}
+{% block subtitle %}{{ artist.email }}{% endblock subtitle %}
 
 {% block content %} 
 
-    <p>{{ artist.email }}</p>
+    <!-- Place work here -->
 
 {% endblock content %}

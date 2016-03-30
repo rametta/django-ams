@@ -22,3 +22,7 @@ body {
 .navbar{
     margin-bottom:0px;
 }
+
+.page-title{
+    text-transform: capitalize;
+}
