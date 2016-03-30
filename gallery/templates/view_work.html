@@ -13,12 +13,12 @@
             {% if work.status == 'pending' %}
                 {% if request.user.is_staff %}
                     <div class="col-lg-6">
-                        <p>{{ work.description }}</p>
+                        <p>{{ work.description|linebreaks }}</p>
                         <small>{{ work.submit_date }}</small><br/><br/>
                         <form method="post">
                             {% csrf_token %}
                             <button type="submit" name="approve" value="approve" class="btn btn-primary">Approve</button>
-                            <button type="submit" name="reject" value="reject" class="btn btn-warning">Reject</button>
+                            <button type="submit" name="reject" value="reject" class="btn btn-danger">Reject</button>
                         </form>
                     </div>
                     <div class="col-lg-6">
@@ -35,7 +35,7 @@
                 </div>
             {% else %}
                 <div class="col-lg-6">
-                    <p>{{ work.description }}</p>
+                    <p>{{ work.description|linebreaks }}</p>
                     <small>{{ work.submit_date }}</small>
                 </div>
                 <div class="col-lg-6">

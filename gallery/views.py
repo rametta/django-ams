@@ -7,8 +7,8 @@ import gallery.forms
 
 
 def index(request):
-    # SELECT * FROM gallery_work WHERE status = 'approved' ORDER BY submit_date DESC LIMIT 3
-    approved_work = Work.objects.filter(status='approved').order_by('-submit_date')[:3]
+    # SELECT * FROM gallery_work WHERE status = 'approved' ORDER BY submit_date DESC
+    approved_work = Work.objects.filter(status='approved').order_by('-submit_date')
     return render(request, 'index.html', {'approved': approved_work})
 
 
@@ -44,7 +44,16 @@ def view_artist(request, id):
     artist = User.objects.get(id=id)
     # SELECT * FROM gallery_work WHERE artist = id
     work = Work.objects.filter(artist=id, status='approved')
-    return render(request, 'view_artist.html', {'artist': artist, 'work': work})
+    # SELECT COUNT(*) FROM gallery_work WHERE id = id
+    # SELECT COUNT(*) FROM gallery_work WHERE id = id AND status = 'pending'
+    # SELECT COUNT(*) FROM gallery_work WHERE id = id AND status = 'approved'
+    # SELECT COUNT(*) FROM gallery_work WHERE id = id AND status = 'rejected'
+    count = {'submission': Work.objects.filter(artist=id).count(),
+             'pending': Work.objects.filter(artist=id, status='pending').count(),
+             'approved': Work.objects.filter(artist=id, status='approved').count(),
+             'rejected': Work.objects.filter(artist=id, status='rejected').count()
+             }
+    return render(request, 'view_artist.html', {'artist': artist, 'work': work, 'count': count})
 
 
 @login_required

@@ -19,7 +19,7 @@
                             <tr>
                                 <th>Title</th>
                                 <th>Submit Date</th>
-                                <th>Artist</th>
+                                <th>Approved Date</th>
                                 <th>Image</th>
                             </tr>
                         </thead>
@@ -28,7 +28,7 @@
                                 <tr>
                                     <td><a href="{% url 'view_work' id=work.id %}">{{ work.title }}</a></td>
                                     <td>{{ work.submit_date }}</td>
-                                    <td><a href="{% url 'view_artist' id=work.artist.id %}">{{ work.artist.username }}</a></td>
+                                    <td>{{ work.approved_date }}</td>
                                     <td><img height="64" src="{{ work.image.url }}"/></td>
                                 </tr>
                             {% endfor %}
@@ -41,6 +41,31 @@
                 <p><em>Check back soon!</em></p>
             {% endif %}
             </div>
+            <div class="col-lg-4">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge">{{ count.submission }}</span>
+                        Submissions
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{ count.pending }}</span>
+                        Pending
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{ count.approved }}</span>
+                        Approved
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">{{ count.rejected }}</span>
+                        Rejected
+                    </li>
+                </ul>
+            </div>
+        {% if artist == request.user %}
+            <div class="col-lg-8">
+                <a href="{% url 'add_work' %}"><button class="btn btn-primary pull-right">Add Work</button></a>
+            </div>
+        {% endif %}
         </div>
     </div>
 
