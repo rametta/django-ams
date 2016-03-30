@@ -14,15 +14,12 @@ body {
   height: 25px;
   background-color: #008cba;
 }
-
 .footer .container span{
     color: #ffffff;
 }
-
 .navbar{
     margin-bottom:0px;
 }
-
 .page-title{
     text-transform: capitalize;
 }

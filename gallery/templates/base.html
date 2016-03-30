@@ -38,7 +38,7 @@
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{% url 'work' %}">Browse All Work</a></li>
                     {% if user.is_authenticated %}
-                      <li><a href="{% url 'view_artist' username=request.user.username %}">Your Work</a></li>
+                      <li><a href="{% url 'view_artist' id=request.user.id %}">Your Work</a></li>
                       <li><a href="{% url 'add_work' %}">Add Work</a></li>
                     {% endif %}
                   </ul>
@@ -46,10 +46,19 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
                   {% if user.is_authenticated %}
-                    <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+                      {% if user.is_staff %}
+                          <li class="{% block nav-staff %}{% endblock nav-staff %}"><a href="{% url 'staff' %}">STAFF</a></li>
+                      {% endif %}
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
+                          <ul class="dropdown-menu" role="menu">
+                              <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+                              <li><a href="{% url 'auth_password_change' %}">Change Password</a></li>
+                          </ul>
+                      </li>
                   {% else %}
-                    <li><a href="{% url 'auth_login' %}">Login</a></li>
-                    <li><a href="{% url 'registration_register' %}">Register</a></li>
+                      <li><a href="{% url 'auth_login' %}">Login</a></li>
+                      <li><a href="{% url 'registration_register' %}">Register</a></li>
                   {% endif %}
               </ul>
             </div>

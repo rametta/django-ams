@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ work.title }} - {{ block.super }}{% endblock title %}
+
+{% block nav-artist %}active{% endblock nav-artist %}
+
+{% block pagetitle %}{{ work.title }}{% endblock pagetitle %}
+{% block subtitle %}<a class="text-capitalize" href="{% url 'view_artist' id=work.artist.id %}">{{ work.artist.username }}</a>{% endblock subtitle %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% if work.status == 'pending' %}
+                {% if request.user.is_staff %}
+                    <div class="col-lg-6">
+                        <p>{{ work.description }}</p>
+                        <small>{{ work.submit_date }}</small><br/><br/>
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" name="approve" value="approve" class="btn btn-primary">Approve</button>
+                            <button type="submit" name="reject" value="reject" class="btn btn-warning">Reject</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <a target="_blank" href="{{ work.image.url }}"><img class="img-responsive" src="{{ work.image.url }}"/></a>
+                    </div>
+                {% else %}
+                    <div class="col-lg-12">
+                        <p><em>This work is pending approval.</em></p>
+                    </div>
+                {% endif %}
+            {% elif work.status == 'rejected' %}
+                <div class="col-lg-12">
+                    <p><em>Sorry, this work was rejected.</em></p>
+                </div>
+            {% else %}
+                <div class="col-lg-6">
+                    <p>{{ work.description }}</p>
+                    <small>{{ work.submit_date }}</small>
+                </div>
+                <div class="col-lg-6">
+                    <a target="_blank" href="{{ work.image.url }}"><img class="img-responsive" src="{{ work.image.url }}"/></a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

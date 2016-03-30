@@ -1,18 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ artist.username }} - {{ block.super }}{% endblock title %}
+{% block title %}Staff Dashboard - {{ block.super }}{% endblock title %}
 
-{% block nav-artist %}active{% endblock nav-artist %}
+{% block nav-staff %}active{% endblock nav-staff %}
 
-{% block pagetitle %}{{ artist.username }}{% endblock pagetitle %}
-{% block subtitle %}{{ artist.email }}{% endblock subtitle %}
+{% block pagetitle %}Staff Dashboard{% endblock pagetitle %}
 
-{% block content %} 
+{% block content %}
 
-    <div class="container">
+     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-            {% if work %}
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered table-striped">
                         <thead>
@@ -24,7 +22,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for work in work %}
+                            {% for work in pending %}
                                 <tr>
                                     <td><a href="{% url 'view_work' id=work.id %}">{{ work.title }}</a></td>
                                     <td>{{ work.submit_date }}</td>
@@ -35,11 +33,6 @@
                         </tbody>
                     </table>
                 </div>
-            {% else %}
-                <br />
-                <p><em>Sorry, <span class="text-capitalize">{{ artist.username }}</span> does not have any approved work yet.</em></p>
-                <p><em>Check back soon!</em></p>
-            {% endif %}
             </div>
         </div>
     </div>

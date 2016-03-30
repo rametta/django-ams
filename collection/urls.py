@@ -16,8 +16,10 @@ urlpatterns = [
     url(r'^$', views.index, name ='home'),
     url(r'^work/$', views.work, name='work'),
     url(r'^work/add/$', views.add_work, name='add_work'),
+    url(r'^work/(?P<id>[0-9]+)/$', views.view_work, name='view_work'),
     url(r'^artists/$', views.artists, name='artists'),
-    url(r'^artist/(?P<username>\w+)/$', views.view_artist, name='view_artist'),
+    url(r'^artist/(?P<id>[0-9]+)/$', views.view_artist, name='view_artist'),
+    url(r'^staff/$', views.staff, name='staff'),
     # Account URL's
     url(r'^accounts/password/reset/$',password_reset,{'template_name': 'registration/password_reset_form.html'},name="password_reset"),
     url(r'^accounts/password/reset/done/$',password_reset_done,{'template_name': 'registration/password_reset_done.html'},name="password_reset_done"),

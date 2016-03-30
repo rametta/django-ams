@@ -6,10 +6,35 @@
 
 {% block pagetitle %}All Work{% endblock pagetitle %}
 
-{% block content %} 
+{% block content %}
 
-    {% for work in all_work %}
-        <p>{{ work.title }}</p>
-    {% endfor %}
+     <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Submit Date</th>
+                                <th>Artist</th>
+                                <th>Image</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for work in approved %}
+                                <tr>
+                                    <td><a href="{% url 'view_work' id=work.id %}">{{ work.title }}</a></td>
+                                    <td>{{ work.submit_date }}</td>
+                                    <td><a href="{% url 'view_artist' id=work.artist.id %}">{{ work.artist.username }}</a></td>
+                                    <td><img height="64" src="{{ work.image.url }}"/></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock content %}

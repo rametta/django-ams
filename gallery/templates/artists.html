@@ -23,7 +23,7 @@
                             {% for artist in all_artists %}
                                 <tr>
                                     <td>{{ artist.id }}</td>
-                                    <td><a href="{% url 'view_artist' username=artist.username%}">{{ artist.username }}</a></td>
+                                    <td><a href="{% url 'view_artist' id=artist.id %}">{{ artist.username }}</a></td>
                                     <td>{{ artist.email }}</td>
                                 </tr>
                             {% endfor %}
