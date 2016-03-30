@@ -1,9 +1,40 @@
 {% extends 'base.html' %}
 
-{% block title %}Homepage - {{ block.super }}{% endblock title %}
+{% block title %}Welcome - {{ block.super }}{% endblock title %}
 
 {% block nav-home %}class="active"{% endblock nav-home %}
 
-{% block pagetitle %}Home{% endblock pagetitle %}
+{% block pagetitle %}Welcome{% endblock pagetitle %}
 
-{% block content %} {% endblock content %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <p>The Concordia University Art Management System is used for the archival of student art. Student's can upload photos of their paintings, sculptures and even short stories for storage and display. <a href="{% url 'registration_register' %}">Sign Up Here!</a></p>
+        </div>
+        <div class="col-lg-12">
+            <hr>
+            <p class="text-muted">Some of the recent work uploaded</p>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            {% for work in approved %}
+                <a href="{% url 'view_work' id=work.id %}">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ work.title }}</h3>
+                        <small class="text-capitalize">{{ work.artist.username }}</small>
+                    </div>
+                    <div class="panel-body">
+                        <img class="img-responsive" src="{{ work.image.url }}"/>
+                    </div>
+                </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="col-lg-6 col-md-6">
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
