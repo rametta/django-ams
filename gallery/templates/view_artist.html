@@ -11,7 +11,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-8">
             {% if work %}
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered table-striped">
@@ -59,13 +59,19 @@
                         <span class="badge">{{ count.rejected }}</span>
                         Rejected
                     </li>
+                    <li class="list-group-item">
+                        Joined
+                        <span class="pull-right">{{ artist.date_joined }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        Last Login
+                        <span class="pull-right">{{ artist.last_login }}</span>
+                    </li>
                 </ul>
+                {% if artist == request.user %}
+                    <a href="{% url 'add_work' %}"><button class="btn btn-primary pull-right">Add Work</button></a>
+                {% endif %}
             </div>
-        {% if artist == request.user %}
-            <div class="col-lg-8">
-                <a href="{% url 'add_work' %}"><button class="btn btn-primary pull-right">Add Work</button></a>
-            </div>
-        {% endif %}
         </div>
     </div>
 

@@ -4,12 +4,12 @@
 
 {% block nav-artist %}active{% endblock nav-artist %}
 
-{% block pagetitle %}Artists{% endblock pagetitle %}
+{% block pagetitle %}Artists <span class="badge">{{ all_artists|length }}</span>{% endblock pagetitle %}
 
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-8 col-md-8">
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered table-striped">
                         <thead>

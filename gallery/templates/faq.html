@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}FAQ - {{ block.super }}{% endblock title %}
+
+{% block nav-faq %}class="active"{% endblock nav-faq %}
+
+{% block pagetitle %}F.A.Q.{% endblock pagetitle %}
+
+{% block content %}
+    <br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="faq">
+                <li><strong>Q:</strong> Who built Concordia's Art Management System?</li>
+                <li><strong>A:</strong> This system was built by Jason Rametta, Akshar Patel and Oscar Bobadilla.</li>
+                <br/>
+                <li><strong>Q:</strong> How was this system built?</li>
+                <li><strong>A:</strong> We used many technologies. The site's backend is written in <a target="_blank" href="https://www.python.org/">Python</a> and built on the <a target="_blank" href="https://www.djangoproject.com/">Django</a> framework. Data is stored in a relational database powered by <a target="_blank" href="http://www.postgresql.org/">PostgreSQL</a>. The site is hosted on <a target="_blank" href="https://www.heroku.com/">Heroku</a> servers. The frontend is built upon the <a target="_blank" href="http://getbootstrap.com/">Bootstrap</a> framework and the <a target="_blank" href="https://jquery.com/">jQuery</a> library. All code was written in the <a target="_blank" href="https://www.jetbrains.com/pycharm/">PyCharm</a> IDE. Languages used include: Python, JavaScript, SQL, HTML &amp; CSS.</li>
+                <br/>
+                <li><strong>Q:</strong> Does the system work on mobile phones?</li>
+                <li><strong>A:</strong> Yes! We follow the latest trends in web development and have 100% compatibility with all smart phones and tablets.</li>
+                <br/>
+                <li><strong>Q:</strong> How can I add my work?</li>
+                <li><strong>A:</strong> It's easy, just <a target="_blank" href="{% url 'registration_register' %}">sign up</a> here. Once signed up, <a href="{% url 'add_work' %}">click here</a> to add your work!</li>
+                <br/>
+                <li><strong>Q:</strong> I added my work but I can't see it, where did it go?</li>
+                <li><strong>A:</strong> Not to worry, all work submitted must be approved by a staff member before being added to the site. You will get an email once it has been verified.</li>
+                <br/>
+                <li><strong>Q:</strong> How long will it take to get my work approved?</li>
+                <li><strong>A:</strong> Not long.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

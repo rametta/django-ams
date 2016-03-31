@@ -76,3 +76,6 @@ def staff(request):
     # SELECT * FROM gallery_work WHERE status = 'pending'
     work = Work.objects.filter(status = 'pending')
     return render(request, 'staff.html', {'pending': work})
+
+def faq(request):
+    return render(request, 'faq.html')
