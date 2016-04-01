@@ -43,6 +43,7 @@
                     {% endif %}
                   </ul>
                 </li>
+              <li {% block nav-search %}{% endblock nav-search %}><a href="{% url 'search' %}">Search</a></li>
               <li {% block nav-faq %}{% endblock nav-faq %}><a href="{% url 'faq' %}">FAQ</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">

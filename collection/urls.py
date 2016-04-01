@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^artist/(?P<id>[0-9]+)/$', views.view_artist, name='view_artist'),
     url(r'^staff/$', views.staff, name='staff'),
     url(r'^faq/$', views.faq, name='faq'),
+    url(r'^search/$', views.search, name='search'),
     # Account URL's
     url(r'^accounts/password/reset/$',password_reset,{'template_name': 'registration/password_reset_form.html'},name="password_reset"),
     url(r'^accounts/password/reset/done/$',password_reset_done,{'template_name': 'registration/password_reset_done.html'},name="password_reset_done"),

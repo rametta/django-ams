@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Search - {{ block.super }}{% endblock title %}
+
+{% block nav-search %}active{% endblock nav-search %}
+
+{% block pagetitle %}Search{% endblock pagetitle %}
+
+{% block header %}
+    <link rel="stylesheet" href="{% static 'css/datetimepicker.css' %}"/>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <form class="form-horizontal" method="get" action="/search/">
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <label class="radio-inline">
+                            <input type="radio" name="q" id="inlineRadio1" value="artist"> Artist
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="q" id="inlineRadio2" value="work"> Work
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputArtist" class="col-sm-2 control-label">Artist</label>
+                    <div class="col-sm-10">
+                        <input type="text" required="true" class="form-control" id="inputArtist" name="user" placeholder="Username">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputWork" class="col-sm-2 control-label">Work</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputWork" name="title" placeholder="Title">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="datetimepicker6" class="col-sm-2 control-label">Start Date</label>
+                    <div class="col-sm-10">
+                        <div class='input-group date' id='datetimepicker6'>
+                        <input type='text' name="start" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="datetimepicker7" class="col-sm-2 control-label">End Date</label>
+                    <div class="col-sm-10">
+                        <div class='input-group date' id='datetimepicker7'>
+                            <input type='text' name="end" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-lg-6">
+        {% if results %}
+            {% if query == 'work' %}
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Artist</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for work in results %}
+                            <tr>
+                                <td><a href="{% url 'view_work' id=work.id %}">{{ work.title }}</a></td>
+                                <td><a href="{% url 'view_artist' id=work.artist.id %}">{{ work.artist.username }}</a></td>
+                                <td>{{ work.approved_date }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Artist</th>
+                                <th>Join Date</th>
+                                <th>Submissions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for artist in results %}
+                                <tr>
+                                    <td><a href="{% url 'view_artist' id=artist.id %}">{{ artist.username }}</a></td>
+                                    <td>{{ artist.date_joined }}</td>
+                                    <td>{#  #}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        {% endif %}
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+    <script src="{% static 'js/moment.js' %}"></script>
+    <script src="{% static 'js/datetimepicker.js' %}"></script>
+        <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker6').datetimepicker();
+            $('#datetimepicker7').datetimepicker({
+                useCurrent: false //Important! See issue #1075
+            });
+            $("#datetimepicker6").on("dp.change", function (e) {
+                $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+            });
+            $("#datetimepicker7").on("dp.change", function (e) {
+                $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+            });
+        });
+    </script>
+
+{% endblock footer %}
