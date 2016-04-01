@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from datetime import datetime
+from django.utils import formats
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.mail import send_mail
@@ -102,10 +104,15 @@ def search(request):
         query = request.GET['q']
         user = request.GET['user']
         work_title = request.GET['title']
+        start = datetime.strptime(request.GET['start'], '%Y-%m-%d').date()
+        end = datetime.strptime(request.GET['end'], '%Y-%m-%d').date()
+        error = False
         if query == 'artist':
-            results = User.objects.filter(username__icontains=user)
+            results = User.objects.filter(username__icontains=user, date_joined__range=[start,end])
         else:
-            results = Work.objects.filter(title__icontains=work_title)
-        return render(request, 'search.html',{'results': results, 'query': query})
+            results = Work.objects.filter(title__icontains=work_title, approved_date__range=[start,end])
+        if not results:
+            error = True
+        return render(request, 'search.html',{'results': results, 'query': query, 'error': error})
     else:
         return render(request, 'search.html')
