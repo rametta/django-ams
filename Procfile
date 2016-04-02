@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT gallery.wsgi:application
+web: waitress-serve --port=$PORT collection.wsgi:application
