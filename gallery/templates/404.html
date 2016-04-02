@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}404 - {{ block.super }}{% endblock title %}
+
+{% block pagetitle %}404 Error{% endblock pagetitle %}
+{% block subtitle %}Page not found{% endblock subtitle %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <p>We're sorry, the page you requested does not exist.</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

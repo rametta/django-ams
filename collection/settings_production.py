@@ -15,3 +15,9 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'app49080620@heroku.com'
+EMAIL_HOST_PASSWORD = 'Temp1212'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True

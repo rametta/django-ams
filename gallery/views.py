@@ -110,7 +110,7 @@ def search(request):
         if query == 'artist':
             results = User.objects.filter(username__icontains=user, date_joined__range=[start,end])
         else:
-            results = Work.objects.filter(title__icontains=work_title, approved_date__range=[start,end])
+            results = Work.objects.filter(title__icontains=work_title, approved_date__range=[start,end], status='approved')
         if not results:
             error = True
         return render(request, 'search.html',{'results': results, 'query': query, 'error': error})

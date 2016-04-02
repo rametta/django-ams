@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}500 - {{ block.super }}{% endblock title %}
+
+{% block pagetitle %}500 Error{% endblock pagetitle %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <p>We're sorry, you ran into an error.</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
