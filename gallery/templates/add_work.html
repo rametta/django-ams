@@ -44,15 +44,8 @@
 
 {% block footer %}
     <script>
-        $body = $("body");
-
-        $(document).on({
-            ajaxStart: function() { $body.addClass("loading");    },
-            ajaxStop: function() { $body.removeClass("loading"); }
-        });
-
-        $("#upload").click(function(){
-            console.log("Upload button clicked, show loading gif")
+        $('.form-horizontal').submit(function() {
+            $('.modal').show();
         });
     </script>
 {% endblock footer %}
