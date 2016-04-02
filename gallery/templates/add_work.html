@@ -50,5 +50,9 @@
             ajaxStart: function() { $body.addClass("loading");    },
             ajaxStop: function() { $body.removeClass("loading"); }
         });
+
+        $("#upload").click(function(){
+            console.log("Upload button clicked, show loading gif")
+        });
     </script>
 {% endblock footer %}
