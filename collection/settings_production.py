@@ -19,6 +19,6 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'app49080620@heroku.com'
-EMAIL_HOST_PASSWORD = 'Temp1212'
+EMAIL_HOST_PASSWORD = 'eje4yuvd8859'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
