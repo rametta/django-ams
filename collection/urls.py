@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^accounts/password/reset/done/$',password_reset_done,{'template_name': 'registration/password_reset_done.html'},name="password_reset_done"),
     url(r'^accounts/password/reset/(?P<uidb64>[0-9AZa-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',password_reset_confirm,{'template_name': 'registration/password_reset_confirm.html'},name="password_reset_confirm"),
     url(r'^accounts/password/done/$',password_reset_complete,{'template_name': 'registration/password_reset_complete.html'},name="password_reset_complete"),
-    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^accounts/', include('registration.backends.default.urls')),
     # Admin URL's
     url(r'^admin/', admin.site.urls),
 ]
