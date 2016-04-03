@@ -11,7 +11,7 @@ import gallery.forms
 
 def index(request):
     # SELECT * FROM gallery_work WHERE status = 'approved' ORDER BY submit_date DESC
-    approved_work = Work.objects.filter(status='approved').order_by('-submit_date')
+    approved_work = Work.objects.filter(status='approved').order_by('?')[:10]
     return render(request, 'index.html', {'approved': approved_work})
 
 
