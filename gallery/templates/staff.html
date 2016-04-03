@@ -19,6 +19,7 @@
                                 <th>Title</th>
                                 <th>Submit Date</th>
                                 <th>Artist</th>
+                                <th>Email</th>
                                 <th>Image</th>
                             </tr>
                         </thead>
@@ -28,6 +29,7 @@
                                     <td><a href="{% url 'view_work' id=work.id %}">{{ work.title }}</a></td>
                                     <td>{{ work.submit_date }}</td>
                                     <td><a href="{% url 'view_artist' id=work.artist.id %}">{{ work.artist.username }}</a></td>
+                                    <td>{{ work.artist.email }}</td>
                                     <td><img height="64" src="{{ work.image.url }}"/></td>
                                 </tr>
                             {% endfor %}
