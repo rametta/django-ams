@@ -17,8 +17,8 @@ MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'edge.websitewelcome.com'
+EMAIL_HOST = 'mail.contutor.ca'
 EMAIL_HOST_USER = 'gallery@contutor.ca'
 EMAIL_HOST_PASSWORD = 'temp1212'
-EMAIL_PORT = 465
+EMAIL_PORT = 25
 EMAIL_USE_TLS = True
