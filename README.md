@@ -11,6 +11,7 @@ In order to run this application on your local machine. You will need the follow
 
 Once those are installed, create a folder on your local machine and [git clone](https://git-scm.com/docs/git-clone) this repo into there.
 Then create a virtual environment and activate it. If you are running Python 2, use easy_install to install [pip](https://pypi.python.org/pypi/pip) into your environment. If you're running Python 3, then pip is automatically installed.
+
 Pip is a package manager for python projects and will be used to install the required dependencies for this application.
 Once pip is ready, install the requirements by running `pip install -r requirements.txt` in your command line and virtual environment.
 At that point Django, Pillow and a bunch of other dependencies will be downloaded to your local machine and you will be ready to create a local database.
